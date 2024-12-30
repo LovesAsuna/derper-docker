@@ -2,6 +2,7 @@ FROM golang:latest AS builder
 WORKDIR /app
 
 ARG DERP_VERSION=latest
+ENV GOPROXY https://goproxy.io,direct
 RUN go install tailscale.com/cmd/derper@${DERP_VERSION}
 
 FROM ubuntu
